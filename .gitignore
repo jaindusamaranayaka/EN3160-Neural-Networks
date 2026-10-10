@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Notebook and test artifacts
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Downloaded datasets and generated model checkpoints
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+outputs/checkpoints/*
+!outputs/checkpoints/.gitkeep
