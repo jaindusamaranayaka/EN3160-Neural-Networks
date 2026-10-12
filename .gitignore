@@ -16,3 +16,6 @@ data/processed/*
 !data/processed/.gitkeep
 outputs/checkpoints/*
 !outputs/checkpoints/.gitkeep
+notebooks/data/
+*.zip
+*.tar.gz
