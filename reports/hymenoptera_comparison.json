@@ -1,0 +1,12 @@
+{
+  "fine_tune": {
+    "test_accuracy": 0.9477124183006536,
+    "test_loss": 0.15941916805466796,
+    "trainable_parameters": 11177538
+  },
+  "feature_extractor": {
+    "test_accuracy": 0.954248366013072,
+    "test_loss": 0.15046505951413922,
+    "trainable_parameters": 1026
+  }
+}
