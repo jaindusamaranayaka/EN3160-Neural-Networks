@@ -24,9 +24,9 @@ python -m src.mnist.train
 python -m src.transfer_learning.train
 ```
 
-Each script runs for 10 epochs by default. Use `--help` to see optional settings. The scripts save per-epoch histories under `reports/` and plots and confusion matrices under `outputs/figures/`.
+Each script runs for 10 epochs by default. Use `--help` to see optional settings. Q1 uses explicit softmax cross-entropy backpropagation and compares the required 100-unit sigmoid network with a one-layer baseline. Q2 and Q3 use the shared PyTorch training utilities. Histories are saved under `reports/`; plots and confusion matrices are saved under `outputs/figures/`.
 
-The notebook at `notebooks/assignment_03_initial_parts.ipynb` contains the assignment questions, model code, shared training function, saved results, comparisons, and all result figures. Its default `RUN_TRAINING = False` setting loads the saved results without training again; set it to `True` to rerun the experiments.
+The notebook at `notebooks/assignment_03_initial_parts.ipynb` contains the assignment questions, important code, saved results, comparisons, and result figures. Its default `RUN_TRAINING = False` setting loads saved results without training again; set it to `True` to rerun.
 
 ## Submission
 

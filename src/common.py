@@ -67,6 +67,8 @@ def fit(model: nn.Module, train_loader: DataLoader, test_loader: DataLoader,
                 parameter.requires_grad for parameter in module.parameters(recurse=False)
             ):
                 module.eval()
+        # These train accuracies are an online average over minibatches in
+        # training mode; dropout and random image augmentation remain active.
         total_loss = total_correct = total = 0
         for inputs, targets in train_loader:
             inputs, targets = inputs.to(device), targets.to(device)
@@ -79,6 +81,7 @@ def fit(model: nn.Module, train_loader: DataLoader, test_loader: DataLoader,
             total_correct += logits.argmax(dim=1).eq(targets).sum().item()
             total += targets.size(0)
         train_metrics = {"loss": total_loss / total, "accuracy": total_correct / total}
+        # Test metrics are measured after the epoch in evaluation mode.
         test_metrics = evaluate(model, test_loader, criterion, device)
         for metric in ("loss", "accuracy"):
             history[f"train_{metric}"].append(train_metrics[metric])
@@ -133,7 +136,7 @@ def save_plots(history: dict[str, list[float]], out_dir: Path, prefix: str,
         for i in range(matrix.shape[0]):
             for j in range(matrix.shape[1]):
                 ax.text(j, i, str(matrix[i, j]), ha="center", va="center",
-                        color="white" if matrix[i, j] > threshold else "black", fontsize=7)
+                        color="white" if matrix[i, j] > threshold else "black", fontsize=12)
         fig.tight_layout()
-        fig.savefig(out_dir / f"{prefix}_confusion_matrix.png", dpi=160)
+        fig.savefig(out_dir / f"{prefix}_confusion_matrix.png", dpi=220)
         plt.close(fig)
